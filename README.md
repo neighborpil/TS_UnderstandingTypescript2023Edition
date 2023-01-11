@@ -26,5 +26,47 @@
 }
 
 ```
+3. 서버를 구동한다
+```
+% npm start
+```
+4. 코드 작성 후 컴파일한다
+```
+% tsc app.ts
+```
 
+### Typescirpt Features
+- object타입을 하면 내부의 어떤 것들에 대해서도 타입추론을 하지 못하고 에러로 표시한다
+```
+const person: object = {
+    name: 'Maximilian',
+    age: 30,
+};
 
+const person: {} = {
+    name: 'Maximilian',
+    age: 30,
+};
+```
+- typescript representation
+```
+const person: {
+    name: string,
+    age: number,
+    hobbies: string[]
+} = {
+    name: 'Maximilian',
+    age: 30,
+    hobbies: ['Sports', "Cooking"]
+};
+```
+
+#### Typescript core types
+- number
+- string
+- boolean
+- object
+- Array
+- Tuple(typescript only) : fixed length of array
+- enum: automatically enumerated global constant identifiers
+- any: most flexible, any kind of value, no specific type
