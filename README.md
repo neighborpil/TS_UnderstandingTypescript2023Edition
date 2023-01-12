@@ -69,4 +69,41 @@ const person: {
 - Array
 - Tuple(typescript only) : fixed length of array
 - enum: automatically enumerated global constant identifiers
+```
+const ADMIN = 0;
+const READ_ONLY = 1;
+const AUTHOR = 2;
+
+enum Role { ADMIN = 'ADMIN', READ_ONLY = 200, AUTHOR};
+```
 - any: most flexible, any kind of value, no specific type
+- union: comines more than 2 types like string | number
+
+#### types can be a literal string
+```
+function combine(resultConversion: 'as-number' | 'as-text') {
+    let result;
+    return result;
+}
+```
+
+#### 타입 정의
+```
+type Combinable = number | string;
+type ConversionDescriptor = 'as-number' | 'as-text';
+type User = {name:string, age:number};
+```
+
+#### explicitly set return type
+```
+function add(n1: number, n2: number): number {
+    return n1 + n2;
+}
+
+function printResult(num: number):void {
+    console.log('Result: ' + num);
+}
+
+printResult(add(4, 5));
+```
+
