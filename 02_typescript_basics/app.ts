@@ -1,20 +1,21 @@
-function add(n1: number, n2: number): number {
-    return n1 + n2;
+let userInput: unknown; // This is almost same as "let userInput;" or "let userInput: any"
+let userInputAny: any;
+let userName: string;
+
+userInput = 5;
+userInput = 'Max';
+userInputAny = 'MaxAny';
+// userName = userInput; // got an error
+userName = userInputAny; // no error
+
+if (userInput === 'string') {
+    userName = userInput;
 }
 
-function printResult(num: number) {
-    console.log('Result: ' + num);
+// Never type
+function generateError(message: string, code: number): never {
+    throw {message: message, errorCode: code};
 }
 
-function printResultVoid(num: number):void {
-    console.log('Result: ' + num);
-}
-
-function printResultUndefined(num: number):undefined{
-    console.log('Result: ' + num);
-    return undefined;
-}
-
-printResult(add(4, 5));
-
-let someValue: undefined;
+const result = generateError('An error occured!', 500);
+console.log(result); // this code doesn't execute because exception will be thrown before this code

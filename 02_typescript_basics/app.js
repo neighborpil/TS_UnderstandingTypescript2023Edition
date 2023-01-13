@@ -1,12 +1,16 @@
-function add(n1, n2) {
-    return n1 + n2;
+var userInput; // This is almost same as "let userInput;" or "let userInput: any"
+var userInputAny;
+var userName;
+userInput = 5;
+userInput = 'Max';
+userInputAny = 'MaxAny';
+// userName = userInput; // got an error
+userName = userInputAny; // no error
+if (userInput === 'string') {
+    userName = userInput;
 }
-function printResult(num) {
-    console.log('Result: ' + num);
+// Never type
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
 }
-function printResultUndefined(num) {
-    console.log('Result: ' + num);
-    return undefined;
-}
-printResult(add(4, 5));
-var someValue;
+generateError('An error occured!', 500);
