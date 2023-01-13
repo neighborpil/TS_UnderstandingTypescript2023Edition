@@ -139,5 +139,50 @@ addAndHandle(10, 20, (result) => {
 
 ```
 
-#### unknown type
+### Typescript Compiler
+- Watch mode: tsc 컴파일을 따로 하지 않아도 보고 있다가 ts파일에 수정이 있으면 자동으로 컴파일
+   + 하나의 파일만
+```
+% tsc app.ts --watch
+% tsc app.ts -w
+```
+- 프로젝트 전체를 와치모드로 하기
+   1. 컨피그 파일을 만든다(tsconfig.json)
+   
+```
+% tsc --init
+```
+
+   2. 컴파일하면 프로젝트 전체가 컴파일 된다
+   
+```
+% tsc
+```
+
+   3. 이때 와치모드를 하면 프로젝트 전체의 ts파일을 자동재컴파일 해준다
+   
+```
+% tsc -s
+```
+
+#### Include and Exclude ts files
+- 하다보면 컴파일해서 js파일 만들면 안되는 파일 있을때 설정하는 방법
+- tsconfig.json에서 "exclude"라는 옵션을 추가해주면 된다
+```
+  "exclude": [
+//    "analytics.ts",
+//    "*.dev.ts",
+    "**/*.dev.ts", /* dev.ts라는 패턴을 가진 모든 파일을 컴파일 하지 말것 */
+    "node_modules", /* 노드 모듈을 안해주는것인데 기본적으로 해당 폴더는 무시하기 때문에 안해도 된다. */
+  ],
+```
+
+- include
+```
+  "include": [
+    "app.ts",
+    "analytics.ts",
+  ]
+```
+
 
