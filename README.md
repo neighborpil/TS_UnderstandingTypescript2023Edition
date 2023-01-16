@@ -162,7 +162,7 @@ addAndHandle(10, 20, (result) => {
    3. 이때 와치모드를 하면 프로젝트 전체의 ts파일을 자동재컴파일 해준다
    
 ```
-% tsc -s
+% tsc -w
 ```
 
 #### Include and Exclude ts files
@@ -184,5 +184,8 @@ addAndHandle(10, 20, (result) => {
     "analytics.ts",
   ]
 ```
+#### Compile Options
+```
 
+```
 
