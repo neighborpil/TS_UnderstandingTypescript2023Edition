@@ -12,8 +12,13 @@
 
     /* Language and Environment */
     "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
-    // "jsx": "preserve",                                /* Specify what JSX code is generated. */
+     "lib": [
+       "dom", // 기본 주석처리했을때와 동일
+       "es6", // 기본 주석처리했을때와 동일
+       "dom.iterable", // 기본 주석처리했을때와 동일
+       "scripthost" // 기본 주석처리했을때와 동일
+     ],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+    // "jsx": "preserve",                                /* Specify what JSX code is generated. */ // 리액트에서 사용되는 내용이다
     // "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
     // "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
     // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */
@@ -39,15 +44,15 @@
     // "noResolve": true,                                /* Disallow 'import's, 'require's or '<reference>'s from expanding the number of files TypeScript should add to a project. */
 
     /* JavaScript Support */
-    // "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
-    // "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
+     "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
+     "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
     // "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from 'node_modules'. Only applicable with 'allowJs'. */
 
     /* Emit */
-    // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
-    // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
+    // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */ // 라이브러리로 만들때 선언시 필요한 파일을 만들것이냐는 내용
+    // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */ // 라이브러리로 만들때 선언시 필요한 파일을 만들것이냐는 내용
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
-    // "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */
+     "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */ // 디버깅시 필요한 옵션이다 true로 하고 tsc 빌드하면 브라우저 개발자모드 Source탭에서 .js뿐만아니라 .ts파일이 같이 생긴다
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
     // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
     // "removeComments": true,                           /* Disable emitting comments. */
