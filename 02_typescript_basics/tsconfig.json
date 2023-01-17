@@ -31,7 +31,7 @@
 
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
-    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+     "rootDir": "./src",                                  /* Specify the root folder within your source files. */ // tsconfig.json파일을 기준으로 rootDir 이하의 파일들만 컴파일된다
     // "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     // "baseUrl": "./",                                  /* Specify the base directory to resolve non-relative module names. */
     // "paths": {},                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
@@ -54,12 +54,12 @@
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
      "sourceMap": true,                                /* Create source map files for emitted JavaScript files. */ // 디버깅시 필요한 옵션이다 true로 하고 tsc 빌드하면 브라우저 개발자모드 Source탭에서 .js뿐만아니라 .ts파일이 같이 생긴다
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
-    // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
-    // "removeComments": true,                           /* Disable emitting comments. */
-    // "noEmit": true,                                   /* Disable emitting files from a compilation. */
+     "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */ // 출력 폴더, 컴파일된 파일들이 여기 저장된다
+     "removeComments": true,                           /* Disable emitting comments. */ // 컴파일시에 모든 주석들을 삭제한다
+    // "noEmit": true,                                   /* Disable emitting files from a compilation. */ // 컴파일시에 오류를 체크하고 보여주지만 js파일들을 만들지 않는다
     // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
     // "importsNotUsedAsValues": "remove",               /* Specify emit/checking behavior for imports that are only used for types. */
-    // "downlevelIteration": true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */
+    // "downlevelIteration": true,                       /* Emit more compliant, but verbose and less performant JavaScript for iteration. */ // 가끔 옛날버전으로 컴파일시에 for루프가 이상하게 동작할때가 있다. 명확하게 구문을 작성해주니 그때 켜주면 되는 옵션이다.
     // "sourceRoot": "",                                 /* Specify the root path for debuggers to find the reference source code. */
     // "mapRoot": "",                                    /* Specify the location where debugger should locate map files instead of generated locations. */
     // "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
@@ -68,7 +68,7 @@
     // "newLine": "crlf",                                /* Set the newline character for emitting files. */
     // "stripInternal": true,                            /* Disable emitting declarations that have '@internal' in their JSDoc comments. */
     // "noEmitHelpers": true,                            /* Disable generating custom helper functions like '__extends' in compiled output. */
-    // "noEmitOnError": true,                            /* Disable emitting files if any type checking errors are reported. */
+     "noEmitOnError": true,                            /* Disable emitting files if any type checking errors are reported. */ // 에러가 발생하면 js파일을 만들지 않는다, 기본은 false이타이
     // "preserveConstEnums": true,                       /* Disable erasing 'const enum' declarations in generated code. */
     // "declarationDir": "./",                           /* Specify the output directory for generated declaration files. */
     // "preserveValueImports": true,                     /* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
@@ -81,15 +81,17 @@
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
 
     /* Type Checking */
-    "strict": true,                                      /* Enable all strict type-checking options. */
-    // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
-    // "strictNullChecks": true,                         /* When type checking, take into account 'null' and 'undefined'. */
+    "strict": true,                                      /* Enable all strict type-checking options. */ // 타입체킹을 철저히 한다 이거 체크하면 아래의 옵션들을 다 체크한거와 같다
+    // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */ // 함수 파라미터에서 타입이 없으면 에러를 표시한다
+    // "strictNullChecks": true,                         /* When type checking, take into account 'null' and 'undefined'. */ // 이벤트 핸들러 등에서 널이 될 수 있으면 에러를 표시한다. 아니면 !붙여줘야 한다
     // "strictFunctionTypes": true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
-    // "strictBindCallApply": true,                      /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */
+    // "strictBindCallApply": true,                      /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */ // bind함수가 정확한 파라미터를 매칭시켰는데 체크한다
     // "strictPropertyInitialization": true,             /* Check for class properties that are declared but not set in the constructor. */
     // "noImplicitThis": true,                           /* Enable error reporting when 'this' is given the type 'any'. */
     // "useUnknownInCatchVariables": true,               /* Default catch clause variables as 'unknown' instead of 'any'. */
     // "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
+
+    /* Additional Checks */
     // "noUnusedLocals": true,                           /* Enable error reporting when local variables aren't read. */
     // "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read. */
     // "exactOptionalPropertyTypes": true,               /* Interpret optional property types as written, rather than adding 'undefined'. */
@@ -109,13 +111,13 @@
 //    "analytics.ts",
 //    "*.dev.ts",
     "**/*.dev.ts", /* dev.ts라는 패턴을 가진 모든 파일을 컴파일 하지 말것 */
-    "node_modules", /* 노드 모듈을 안해주는것인데 기본적으로 해당 폴더는 무시하기 때문에 안해도 된다. */
+    "node_modules" /* 노드 모듈을 안해주는것인데 기본적으로 해당 폴더는 무시하기 때문에 안해도 된다. */
   ],
   "include": [
-    "app.ts",
-    "analytics.ts",
+    "src/app.ts",
+    "src/analytics.ts"
   ],
   "files": [
-    "app.ts",
+    "src/app.ts"
   ]
 }
