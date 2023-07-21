@@ -6,6 +6,7 @@
 ```
 % npm init -- 엔터엔터엔터...
 % npm install --save-dev lite-server
+% npm install --save-dev typescript
 ```
 2. package.json파일 내에 스크립트를 추가해 준다 : "start": "lite-server"
 ```
