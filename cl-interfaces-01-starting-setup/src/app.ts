@@ -1,10 +1,10 @@
-class Department {
+abstract class Department {
   static fiscalYear = 2020;
   // private readonly id: string;
   // private name: string; // public by default
   protected employees: string[] = [];
 
-  constructor(private readonly id: string, public name: string) { // define and initialize properties
+  constructor(protected readonly id: string, public name: string) { // define and initialize properties
     // this.id = id;
     // this.name = n;
     // console.log(this.fiscalYear)
@@ -14,6 +14,8 @@ class Department {
   static createEmployee(name: string) {
     return { name: name };
   }
+
+  abstract describe(this: Department): void;
 
   describe(this: Department) {
     console.log(`Department: ${this.id}: ${this.name}`);
@@ -37,11 +39,16 @@ class ITDepartment extends Department {
     super(id, 'IT'); // call the constructor of the base class
     this.admins = admins;
   }
+
+    describe() {
+        console.log('IT Department - ID: ' + this.id)
+    }
 }
 
 class AccountDepartment extends Department {
 
   private lastReport: string;
+  private static instance: AccountDepartment;
 
   get mostRecentReport() {
     if (this.lastReport) {
@@ -57,9 +64,21 @@ class AccountDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
+  private constructor(id: string, private reports: string[]) {
     super(id, 'Accounting');
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if(AccountDepartment.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountDepartment('d2', []);
+    return this.instance;
+  }
+
+  describe() {
+    console.log('Accounting Department - ID: ' + this.id)
   }
 
   addEmployee(employee: string) {
@@ -84,28 +103,30 @@ class AccountDepartment extends Department {
 const employee1 = Department.createEmployee('Max');
 console.log(employee1, Department.fiscalYear);
 
-const id = new ITDepartment('d1', ['AccountingIT']);
+const it = new ITDepartment('d1', ['AccountingIT']);
 
 
 
-id.addEmployee('Max');
-id.addEmployee('Manu');
+it.addEmployee('Max');
+it.addEmployee('Manu');
 
 // accounting.employees[2] = 'Anna';
 
-id.describe();
+it.describe();
 // accounting.name = 'NEW NAME';
-id.printEmployeeInformation();
+it.printEmployeeInformation();
 
 
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
 //
 // accountingCopy.describe();
 
-const accounting = new AccountDepartment('d2', []);
+// const accounting = new AccountDepartment('d2', []);
+const accounting = AccountDepartment.getInstance();
 accounting.addReport('Something went wrong...');
 accounting.mostRecentReport = 'Year End Report';
 console.log(accounting.mostRecentReport);
 accounting.addEmployee('Max');
 accounting.addEmployee('Manu');
 accounting.printReports();
+accounting.describe();
